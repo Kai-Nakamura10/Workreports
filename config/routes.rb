@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get    'signup', to: 'users#new'
   post   'signup', to: 'users#create'
   resources :users, only: %i[new create]
-  resources :reports
+  resources :reports do
+    resources :emails, only: [:new, :create], module: :reports
+  end
 end
