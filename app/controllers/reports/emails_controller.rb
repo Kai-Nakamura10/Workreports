@@ -23,7 +23,7 @@ module Reports
         bcc:     p[:bcc],
         subject: p[:subject],
         body:    p[:body]
-      ).deliver_later
+      ).deliver_now
 
       redirect_to reports_path, notice: 'メールを送信しました。'
     end
