@@ -22,7 +22,9 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # URL生成用
-  config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', 'localhost:3000'), protocol: 'http' }
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch('APP_HOST', 'localhost:3000'), protocol: 'http'
+  }
 
   # ★ SendGrid SMTP（ここからが重要）
   config.action_mailer.delivery_method = :smtp
@@ -34,10 +36,6 @@ Rails.application.configure do
     authentication:       :plain,
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = {
-    host: ENV.fetch('APP_HOST'), protocol: 'https'
-  }
-  config.action_mailer.raise_delivery_errors = true
 
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
