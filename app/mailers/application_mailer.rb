@@ -1,4 +1,5 @@
+# app/mailers/application_mailer.rb
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch('MAIL_FROM') # ← SendGridで認証済みアドレス
+  default from: -> { ENV['MAIL_FROM'] }  # ← 送信時に読む
   layout 'mailer'
 end
