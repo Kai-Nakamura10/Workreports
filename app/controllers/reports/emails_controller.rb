@@ -1,8 +1,7 @@
-# app/controllers/reports/emails_controller.rb
 module Reports
   class EmailsController < ApplicationController
-    before_action :require_login          # 認証を使っているなら
-    before_action :set_report             # ネストされた :report_id から読み込む
+    before_action :require_login           # 認証を使っているなら
+    before_action :set_report              # ネストされた :report_id から読み込む
 
     # メール作成フォーム（既定値を日報から自動入力）
     def new
@@ -16,6 +15,8 @@ module Reports
     # 送信処理（public アクションにする）
     def create
       p = email_params
+
+      # PDFを生成してメールを送信
       ReportMailer.report_notification(
         @report,
         to:      p[:to],
